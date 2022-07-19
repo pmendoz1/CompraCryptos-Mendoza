@@ -23,7 +23,6 @@ export default function AddItem(props) {
 const styles = StyleSheet.create({
   container: {
     alignItems: "center",
-    justifyContent: "space-between",
     flexDirection: "row",
     justifyContent: "space-around",
   },

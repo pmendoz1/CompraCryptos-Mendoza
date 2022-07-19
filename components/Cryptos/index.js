@@ -6,24 +6,20 @@ import {
   View,
 } from "react-native";
 
-export default function List(props) {
-  const { itemList, onHandlerModal } = props;
+export default function Portfolio(props) {
+  const { cryptoItems } = props;
   return (
     <>
       <View>
-        <Text style={styles.title}>Lista Prueba</Text>
+        <Text style={styles.title}>Mercado Crypto</Text>
       </View>
       <FlatList
         horizontal={true}
-        data={itemList}
+        data={cryptoItems}
         renderItem={(data) => (
-          <TouchableOpacity
-            onPress={() => onHandlerModal(data.item.id)}
-            style={
-              data.item.completed ? [styles.item, styles.itemRed] : styles.item
-            }
-          >
-            <Text style={styles.text}>{data.item.value}</Text>
+          <TouchableOpacity style={styles.item}>
+            <Text style={styles.text}>{data.item.nombre}</Text>
+            <Text style={styles.text}>Precio: ${data.item.precio}</Text>
           </TouchableOpacity>
         )}
         showsVerticalScrollIndicator={false}
@@ -38,9 +34,9 @@ const styles = StyleSheet.create({
   item: {
     flexDirection: "column",
     padding: 5,
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
     backgroundColor: "#5F5CFA",
-    alignItems: "center",
+    alignItems: "flex-start",
     borderWidth: 0,
     borderColor: "black",
     borderRadius: 25,

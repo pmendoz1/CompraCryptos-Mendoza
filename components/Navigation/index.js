@@ -1,5 +1,5 @@
 import { StyleSheet, View, Text } from "react-native";
-export default function MyTabs() {
+export default function Navigation() {
   return (
     <View style={styles.navigation}>
       <Text style={styles.title}>Mi Perfil</Text>
@@ -12,18 +12,16 @@ const styles = StyleSheet.create({
   navigation: {
     flexDirection: "row",
     justifyContent: "space-evenly",
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "rgba(0,0,0,0.2)",
     borderWidth: 1,
     borderColor: "#E8E8E8",
     borderRadius: 0,
-    marginTop: "0%",
-    marginBottom: "0%",
-    width: "100%",
-    height: 45,
+    height: 40,
   },
   title: {
     color: "#000",
-    fontSize: 15,
-    marginLeft: 10,
+    marginTop: 5,
+    fontSize: 20,
+    fontFamily: "LatoRegular",
   },
 });
