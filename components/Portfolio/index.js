@@ -1,3 +1,4 @@
+import React from "react";
 import {
   FlatList,
   TouchableOpacity,
@@ -7,7 +8,7 @@ import {
 } from "react-native";
 
 export default function Portfolio(props) {
-  const { portfolioItems } = props;
+  const { portfolioItems, navigation } = props;
   return (
     <>
       <View>
@@ -17,7 +18,10 @@ export default function Portfolio(props) {
         horizontal={true}
         data={portfolioItems}
         renderItem={(data) => (
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() => navigation.navigate("Mi Portfolio")}
+          >
             <Text style={styles.text}>{data.item.nombre}</Text>
             <Text style={styles.text}>
               Cantidad Disponible: {data.item.cantidad}

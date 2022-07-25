@@ -1,3 +1,4 @@
+import React from "react";
 import {
   FlatList,
   TouchableOpacity,
@@ -7,7 +8,7 @@ import {
 } from "react-native";
 
 export default function Portfolio(props) {
-  const { cryptoItems } = props;
+  const { cryptoItems, navigation } = props;
   return (
     <>
       <View>
@@ -17,7 +18,10 @@ export default function Portfolio(props) {
         horizontal={true}
         data={cryptoItems}
         renderItem={(data) => (
-          <TouchableOpacity style={styles.item}>
+          <TouchableOpacity
+            style={styles.item}
+            onPress={() => navigation.navigate("Mercado Crypto")}
+          >
             <Text style={styles.text}>{data.item.nombre}</Text>
             <Text style={styles.text}>Precio: ${data.item.precio}</Text>
           </TouchableOpacity>

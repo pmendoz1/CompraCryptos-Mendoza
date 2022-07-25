@@ -1,3 +1,4 @@
+import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import BalanceDetail from "../BalanceDetail";
 import { LinearGradient } from "expo-linear-gradient";
