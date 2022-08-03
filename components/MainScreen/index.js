@@ -8,6 +8,7 @@ import Navigation from "../Navigation";
 import { LinearGradient } from "expo-linear-gradient";
 import Portfolio from "../Portfolio";
 import Cryptos from "../Cryptos";
+import TabNavigator from "../Navigation/TabNavigator";
 
 export default function MainScreen({ navigation }) {
   let objBalance = {
@@ -111,7 +112,6 @@ export default function MainScreen({ navigation }) {
             </View>
           </View>
         </ScrollView>
-        <Navigation />
       </LinearGradient>
     </>
   );

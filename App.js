@@ -1,7 +1,7 @@
 import React from "react";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
-import NavData from "./components/NavData";
+import MainNavigation from "./components/Navigation";
 
 export default function App() {
   const [loaded] = useFonts({
@@ -13,5 +13,5 @@ export default function App() {
 
   if (!loaded) return <AppLoading />;
 
-  return <NavData />;
+  return <MainNavigation />;
 }
