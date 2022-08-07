@@ -6,9 +6,15 @@ import {
   Text,
   View,
 } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { selectWallet } from "../../store/actions/ArrayWallets.action";
 
 export default function Portfolio(props) {
-  const { portfolioItems, navigation } = props;
+  const portfolioItems = useSelector(
+    (state) => state.arrayWallets.arrayWallets
+  );
+  const dispatch = useDispatch();
+  const { navigation } = props;
   return (
     <>
       <View>
@@ -20,7 +26,10 @@ export default function Portfolio(props) {
         renderItem={(data) => (
           <TouchableOpacity
             style={styles.item}
-            onPress={() => navigation.navigate("Mi Portfolio")}
+            onPress={() => {
+              dispatch(selectWallet(data.item.id));
+              navigation.navigate("Mi Portfolio");
+            }}
           >
             <Text style={styles.text}>{data.item.nombre}</Text>
             <Text style={styles.text}>

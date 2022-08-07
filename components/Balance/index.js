@@ -2,14 +2,13 @@ import React from "react";
 import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 import BalanceDetail from "../BalanceDetail";
 import { LinearGradient } from "expo-linear-gradient";
+import { objBalance } from "../../data/ObjBalance";
+import { arrayWallets } from "../../data/ArrayWallets";
 
 const Balance = (props) => {
-  const {
-    balance,
-    balanceDetailVisible,
-    onHandlerBalanceDetail,
-    portfolioItems,
-  } = props;
+  const balance = objBalance;
+  const portfolioItems = arrayWallets;
+  const { balanceDetailVisible, onHandlerBalanceDetail } = props;
   return (
     <TouchableOpacity onPress={onHandlerBalanceDetail}>
       <LinearGradient
@@ -21,7 +20,10 @@ const Balance = (props) => {
         <Text style={styles.title}>Balance</Text>
         <Text style={styles.mainNumber}>${balance.balanceActual}</Text>
         {balanceDetailVisible ? (
-          <BalanceDetail balance={balance} portfolioItems={portfolioItems} />
+          <BalanceDetail
+            balance={balance}
+            portfolioItems={portfolioItems.length}
+          />
         ) : null}
         {balanceDetailVisible ? (
           <Text style={styles.title2}>(Presione para cerrar detalles)</Text>

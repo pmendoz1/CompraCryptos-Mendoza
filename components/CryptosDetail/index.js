@@ -1,8 +1,11 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useSelector } from "react-redux";
 
 const CryptosDetail = () => {
+  const crypto = useSelector((store) => store.arrayCryptos.selected);
+
   return (
     <LinearGradient
       colors={["#8093f1", "#b388eb", "#ffd6ff"]}
@@ -17,8 +20,13 @@ const CryptosDetail = () => {
         end={{ x: 0, y: 0 }}
       >
         <View>
+          <Text style={styles.title}>Nombre: {crypto.nombre}</Text>
+          <Text style={styles.title}>Precio Actual: ${crypto.precio}</Text>
           <Text style={styles.title}>
-            AQUÍ PONDREMOS DETALLES DE LAS CRYPTOS SELECCIONADAS
+            Variación últimas 24 Hs: ${crypto.variable24hs}
+          </Text>
+          <Text style={styles.title}>
+            Cantidad Disponible: {crypto.disponible}
           </Text>
         </View>
       </LinearGradient>

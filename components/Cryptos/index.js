@@ -6,9 +6,14 @@ import {
   Text,
   View,
 } from "react-native";
+import { useSelector, useDispatch } from "react-redux";
+import { selectCrypto } from "../../store/actions/ArrayCryptos.action";
 
-export default function Portfolio(props) {
-  const { cryptoItems, navigation } = props;
+export default function Cryptos(props) {
+  const cryptoItems = useSelector((state) => state.arrayCryptos.arrayCryptos);
+  const dispatch = useDispatch();
+  const { navigation } = props;
+
   return (
     <>
       <View>
@@ -20,7 +25,10 @@ export default function Portfolio(props) {
         renderItem={(data) => (
           <TouchableOpacity
             style={styles.item}
-            onPress={() => navigation.navigate("Mercado Crypto")}
+            onPress={() => {
+              dispatch(selectCrypto(data.item.id));
+              navigation.navigate("Mercado Crypto");
+            }}
           >
             <Text style={styles.text}>{data.item.nombre}</Text>
             <Text style={styles.text}>Precio: ${data.item.precio}</Text>

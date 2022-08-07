@@ -1,8 +1,10 @@
 import React from "react";
 import { Text, View, StyleSheet } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import { useSelector } from "react-redux";
 
 const PortfolioDetail = () => {
+  const wallet = useSelector((store) => store.arrayWallets.selected);
   return (
     <LinearGradient
       colors={["#8093f1", "#b388eb", "#ffd6ff"]}
@@ -17,9 +19,9 @@ const PortfolioDetail = () => {
         end={{ x: 0, y: 0 }}
       >
         <View>
-          <Text style={styles.title}>
-            AQUÍ PONDREMOS DETALLES DE CADA WALLET SELECCIONADA
-          </Text>
+          <Text style={styles.title}>Nombre: {wallet.nombre}</Text>
+          <Text style={styles.title}>Cantidad: {wallet.cantidad}</Text>
+          <Text style={styles.title}>Balance Actual: ${wallet.balance}</Text>
         </View>
       </LinearGradient>
     </LinearGradient>
