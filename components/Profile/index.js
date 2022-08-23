@@ -1,8 +1,28 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { Text, View, StyleSheet, Button } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
+import ImageSelector from "../ImageSelector";
+import * as FileSystem from "expo-file-system";
 
 const Profile = () => {
+  const [image, setImage] = useState("");
+
+  const handleSave = () => {
+    return async () => {
+      const fileName = image.split("/").pop();
+      const Path = FileSystem.documentDirectory + fileName;
+      try {
+        await FileSystem.moveAsync({
+          from: image,
+          to: Path,
+        });
+      } catch (error) {
+        console.log(error.message);
+        throw error;
+      }
+    };
+  };
+
   return (
     <LinearGradient
       colors={["#8093f1", "#b388eb", "#ffd6ff"]}
@@ -17,6 +37,8 @@ const Profile = () => {
         end={{ x: 0, y: 0 }}
       >
         <View>
+          <ImageSelector onImage={(image) => console.log(image)} />
+          <Button title="Guardar Foto" color="#319DA0" onPress={handleSave} />
           <Text style={styles.title}>
             AQUÍ PONDREMOS DETALLES DEL PERFIL DEL USUARIO
           </Text>
